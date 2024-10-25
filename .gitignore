@@ -160,3 +160,37 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Python
+
+# Enter the name of the virtual environment of python here as name_of_venv/
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+*.so
+
+# Next.js
+.next/
+out/
+node_modules/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+.vscode/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
