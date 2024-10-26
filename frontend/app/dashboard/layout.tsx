@@ -1,3 +1,4 @@
+"use client";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
 
@@ -6,13 +7,7 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
-  return (
-    <div className="flex">
-      <DefaultLayout>
-        <main className="w-screen">{children}</main>
-      </DefaultLayout>
-    </div>
-  );
+  return <DefaultLayout>{children}</DefaultLayout>;
 };
 
 export default DashboardLayout;

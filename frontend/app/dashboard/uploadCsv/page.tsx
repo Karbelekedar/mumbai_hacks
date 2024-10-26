@@ -8,7 +8,7 @@ interface CsvData {
   rows: string[][];
 }
 
-export const UploadCsv: React.FC = () => {
+const UploadCsv: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [csvData, setCsvData] = useState<CsvData | null>(null);
@@ -94,15 +94,13 @@ export const UploadCsv: React.FC = () => {
   };
 
   return (
-    <div className="ml-64 mt-8 flex flex-col">
+    <div className="flex flex-col">
       <h1 className="text-3xl font-semibold">Upload CSV</h1>
 
       {csvData ? (
-        <div className="w-[80%]">
+        <div className="w-full">
           <div className="flex justify-between align-center mb-2 mt-4">
-            <h2 className="text-xl font-semibold">
-              {selectedFile?.name}
-            </h2>
+            <h2 className="text-xl font-semibold">{selectedFile?.name}</h2>
             <p className="text-gray-600 mb-4">
               Number of entries: {csvData.rows.length}
             </p>
@@ -175,3 +173,5 @@ export const UploadCsv: React.FC = () => {
     </div>
   );
 };
+
+export default UploadCsv;
