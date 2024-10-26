@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import dynamic from "next/dynamic";
+import storeData from "@/app/dashboard/demandforecasting/storeData.json"
 
 // Dynamically import ApexCharts
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -39,190 +40,192 @@ export default function DemandForecastingPage() {
   const [selectedStore, setSelectedStore] = useState("1");
   const [activeTab, setActiveTab] = useState("short");
 
-  // Sample data (imported from your JSON)
-  const data = {
-    "1": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "home office",
-            predicted_change: "+15",
-            confidence: "85",
-            driving_factors: [
-              "increasing work-from-home population",
-              "convenience premium",
-            ],
-          },
-          {
-            category: "wellness products",
-            predicted_change: "+10",
-            confidence: "80",
-            driving_factors: [
-              "health and wellness focus",
-              "emerging health-conscious consumers",
-            ],
-          },
-          {
-            category: "convenience meals",
-            predicted_change: "+12",
-            confidence: "90",
-            driving_factors: ["work-from-home lifestyle", "high income level"],
-          },
-        ],
-        peak_hours: {
-          changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
-          factors: [
-            "increased work-from-home flexibility",
-            "demand for convenience meals",
-          ],
-        },
-      },
-    },
-    "2": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "health foods",
-            predicted_change: "+10",
-            confidence: "85",
-            driving_factors: [
-              "increasing health consciousness",
-              "affluent family lifestyle",
-            ],
-          },
-          {
-            category: "wellness products",
-            predicted_change: "+12",
-            confidence: "80",
-            driving_factors: ["luxury service demand", "health consciousness"],
-          },
-          {
-            category: "eco-friendly products",
-            predicted_change: "+8",
-            confidence: "75",
-            driving_factors: [
-              "sustainable living focus",
-              "environmentally conscious residents",
-            ],
-          },
-        ],
-        peak_hours: {
-          changes: ["10 AM - 12 PM", "4 PM - 6 PM"],
-          factors: ["affluent families shopping patterns", "retiree free time"],
-        },
-      },
-    },
-    "3": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "snacks",
-            predicted_change: "+5",
-            confidence: "80",
-            driving_factors: ["student segment", "convenience premium"],
-          },
-          {
-            category: "instant foods",
-            predicted_change: "+3",
-            confidence: "75",
-            driving_factors: ["student segment", "price sensitivity"],
-          },
-          {
-            category: "beverages",
-            predicted_change: "+4",
-            confidence: "70",
-            driving_factors: ["student segment", "convenience premium"],
-          },
-        ],
-        peak_hours: {
-          changes: ["12:00 PM - 2:00 PM", "5:00 PM - 7:00 PM"],
-          factors: ["student class schedules", "after work activities"],
-        },
-      },
-    },
-    "4": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "organic groceries",
-            predicted_change: "+15",
-            confidence: "85",
-            driving_factors: [
-              "increased health awareness",
-              "seasonal produce availability",
-            ],
-          },
-          {
-            category: "home office supplies",
-            predicted_change: "+10",
-            confidence: "80",
-            driving_factors: [
-              "continued remote work trends",
-              "back-to-school season",
-            ],
-          },
-        ],
-        peak_hours: {
-          changes: ["10 AM - 12 PM", "5 PM - 7 PM"],
-          factors: ["work-from-home schedules", "evening grocery runs"],
-        },
-      },
-    },
-    "5": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "organic groceries",
-            predicted_change: "+10",
-            confidence: "85",
-            driving_factors: ["health awareness", "seasonal trends"],
-          },
-          {
-            category: "electronics",
-            predicted_change: "-5",
-            confidence: "70",
-            driving_factors: ["economic slowdown", "market saturation"],
-          },
-        ],
-        peak_hours: {
-          changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
-          factors: ["lunch breaks", "evening shopping"],
-        },
-      },
-    },
-    "6": {
-      short_term_predictions: {
-        demand_changes: [
-          {
-            category: "organic produce",
-            predicted_change: "+12",
-            confidence: "85",
-            driving_factors: ["increased health awareness", "seasonal trends"],
-          },
-          {
-            category: "frozen foods",
-            predicted_change: "-5",
-            confidence: "70",
-            driving_factors: [
-              "shift towards fresh products",
-              "warming weather",
-            ],
-          },
-        ],
-        peak_hours: {
-          changes: ["5 PM - 7 PM", "11 AM - 1 PM"],
-          factors: ["after-work shopping", "lunch hour"],
-        },
-      },
-    },
-  };
 
-  const currentStoreData = data[selectedStore] || {
+  const currentStoreData = storeData[selectedStore] || {
     short_term_predictions: {
       demand_changes: [],
       peak_hours: { changes: [], factors: [] },
     },
   };
+
+
+  // // Sample data (imported from your JSON)
+  // const data = {
+  //   "1": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "home office",
+  //           predicted_change: "+15",
+  //           confidence: "85",
+  //           driving_factors: [
+  //             "increasing work-from-home population",
+  //             "convenience premium",
+  //           ],
+  //         },
+  //         {
+  //           category: "wellness products",
+  //           predicted_change: "+10",
+  //           confidence: "80",
+  //           driving_factors: [
+  //             "health and wellness focus",
+  //             "emerging health-conscious consumers",
+  //           ],
+  //         },
+  //         {
+  //           category: "convenience meals",
+  //           predicted_change: "+12",
+  //           confidence: "90",
+  //           driving_factors: ["work-from-home lifestyle", "high income level"],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
+  //         factors: [
+  //           "increased work-from-home flexibility",
+  //           "demand for convenience meals",
+  //         ],
+  //       },
+  //     },
+  //   },
+  //   "2": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "health foods",
+  //           predicted_change: "+10",
+  //           confidence: "85",
+  //           driving_factors: [
+  //             "increasing health consciousness",
+  //             "affluent family lifestyle",
+  //           ],
+  //         },
+  //         {
+  //           category: "wellness products",
+  //           predicted_change: "+12",
+  //           confidence: "80",
+  //           driving_factors: ["luxury service demand", "health consciousness"],
+  //         },
+  //         {
+  //           category: "eco-friendly products",
+  //           predicted_change: "+8",
+  //           confidence: "75",
+  //           driving_factors: [
+  //             "sustainable living focus",
+  //             "environmentally conscious residents",
+  //           ],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["10 AM - 12 PM", "4 PM - 6 PM"],
+  //         factors: ["affluent families shopping patterns", "retiree free time"],
+  //       },
+  //     },
+  //   },
+  //   "3": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "snacks",
+  //           predicted_change: "+5",
+  //           confidence: "80",
+  //           driving_factors: ["student segment", "convenience premium"],
+  //         },
+  //         {
+  //           category: "instant foods",
+  //           predicted_change: "+3",
+  //           confidence: "75",
+  //           driving_factors: ["student segment", "price sensitivity"],
+  //         },
+  //         {
+  //           category: "beverages",
+  //           predicted_change: "+4",
+  //           confidence: "70",
+  //           driving_factors: ["student segment", "convenience premium"],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["12:00 PM - 2:00 PM", "5:00 PM - 7:00 PM"],
+  //         factors: ["student class schedules", "after work activities"],
+  //       },
+  //     },
+  //   },
+  //   "4": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "organic groceries",
+  //           predicted_change: "+15",
+  //           confidence: "85",
+  //           driving_factors: [
+  //             "increased health awareness",
+  //             "seasonal produce availability",
+  //           ],
+  //         },
+  //         {
+  //           category: "home office supplies",
+  //           predicted_change: "+10",
+  //           confidence: "80",
+  //           driving_factors: [
+  //             "continued remote work trends",
+  //             "back-to-school season",
+  //           ],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["10 AM - 12 PM", "5 PM - 7 PM"],
+  //         factors: ["work-from-home schedules", "evening grocery runs"],
+  //       },
+  //     },
+  //   },
+  //   "5": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "organic groceries",
+  //           predicted_change: "+10",
+  //           confidence: "85",
+  //           driving_factors: ["health awareness", "seasonal trends"],
+  //         },
+  //         {
+  //           category: "electronics",
+  //           predicted_change: "-5",
+  //           confidence: "70",
+  //           driving_factors: ["economic slowdown", "market saturation"],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
+  //         factors: ["lunch breaks", "evening shopping"],
+  //       },
+  //     },
+  //   },
+  //   "6": {
+  //     short_term_predictions: {
+  //       demand_changes: [
+  //         {
+  //           category: "organic produce",
+  //           predicted_change: "+12",
+  //           confidence: "85",
+  //           driving_factors: ["increased health awareness", "seasonal trends"],
+  //         },
+  //         {
+  //           category: "frozen foods",
+  //           predicted_change: "-5",
+  //           confidence: "70",
+  //           driving_factors: [
+  //             "shift towards fresh products",
+  //             "warming weather",
+  //           ],
+  //         },
+  //       ],
+  //       peak_hours: {
+  //         changes: ["5 PM - 7 PM", "11 AM - 1 PM"],
+  //         factors: ["after-work shopping", "lunch hour"],
+  //       },
+  //     },
+  //   },
+  // };
 
   const chartData = transformDemandData(currentStoreData);
   const chartOptions = {
