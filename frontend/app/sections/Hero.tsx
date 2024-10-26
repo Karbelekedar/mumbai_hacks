@@ -12,8 +12,14 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export const Hero = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/dashboard/uploadCsv");
+  };
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -35,16 +41,16 @@ export const Hero = () => {
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tigher bg-gradient-to-b from-black to-[#001e80] text-transparent bg-clip-text mt-6">
-            Hyperlocal Excellence
+              Hyperlocal Excellence
             </h1>
             <p className="text-xl text-[#010d3e] tracking-tight mt-6">
-            Transform your hyperlocal business with AI-powered inventory prediction that understands your local market better than ever before. Stay ahead of demand, not behind it.
+              Transform your hyperlocal business with AI-powered inventory
+              prediction that understands your local market better than ever
+              before. Stay ahead of demand, not behind it.
             </p>
             <div className="flex gap-1 items-center mt-[30px]">
-              <button className="btn btn-primary">Sign In</button>
-              <button className="btn btn-text gap-1">
-                <span>Learn more</span>
-                <ArrowIcon className="h-5 w-5" />
+              <button onClick={handleClick} className="btn btn-primary">
+                Get Started
               </button>
             </div>
           </div>
