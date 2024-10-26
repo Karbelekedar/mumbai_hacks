@@ -1,0 +1,448 @@
+{
+    "1": {
+        "current_analysis": {
+            "primary_segment": "young professionals",
+            "secondary_segment": "business travelers",
+            "income_level": "high",
+            "age_distribution": {
+                "25-34": 0.35,
+                "35-44": 0.3,
+                "45-54": 0.2,
+                "others": 0.15
+            },
+            "spending_patterns": {
+                "high_spend_categories": [
+                    "prepared meals",
+                    "premium groceries",
+                    "health foods"
+                ],
+                "price_sensitivity": "low",
+                "convenience_premium": "high"
+            }
+        },
+        "future_projections": {
+            "population_trends": {
+                "growth_rate": "moderate",
+                "development_impact": [
+                    "new luxury residential towers",
+                    "office-to-residential conversions",
+                    "improved public spaces"
+                ],
+                "5_year_outlook": {
+                    "population_multiplier": 1.08,
+                    "development_stage": "advanced",
+                    "emerging_demographics": [
+                        "remote workers",
+                        "health-conscious consumers"
+                    ]
+                }
+            },
+            "lifestyle_evolution": {
+                "emerging_trends": [
+                    "increasing work-from-home population",
+                    "growing residential community",
+                    "health and wellness focus"
+                ],
+                "impact_areas": [
+                    "health_wellness_products",
+                    "home_essentials",
+                    "convenience_services",
+                    "premium_products"
+                ]
+            }
+        },
+        "product_implications": {
+            "emerging_categories": [
+                {
+                    "category": "home office",
+                    "driver": "increasing work-from-home population",
+                    "confidence": "high"
+                },
+                {
+                    "category": "productivity tools",
+                    "driver": "increasing work-from-home population",
+                    "confidence": "high"
+                },
+                {
+                    "category": "convenience meals",
+                    "driver": "increasing work-from-home population",
+                    "confidence": "high"
+                },
+                {
+                    "category": "health foods",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "wellness products",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "fitness equipment",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "vitamins",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "organic beauty",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "mental health",
+                    "driver": "health and wellness focus",
+                    "confidence": "high"
+                }
+            ],
+            "declining_categories": [
+                {
+                    "category": "formal wear",
+                    "reason": "increasing work-from-home population",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "commute-related items",
+                    "reason": "increasing work-from-home population",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "processed foods",
+                    "reason": "health and wellness focus",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "high-sugar items",
+                    "reason": "health and wellness focus",
+                    "confidence": "medium"
+                }
+            ],
+            "price_point_evolution": {
+                "trend": "premium",
+                "factors": [
+                    "Area income level: high",
+                    "Luxury development",
+                    "Residential development"
+                ],
+                "category_impacts": {
+                    "premium_goods": "increase",
+                    "everyday_essentials": "stable"
+                },
+                "change": "+10-15%"
+            },
+            "innovation_opportunities": [
+                {
+                    "area": "wellness",
+                    "opportunity": "personalized health solutions",
+                    "priority": "high"
+                },
+                {
+                    "area": "home solutions",
+                    "opportunity": "home organization and decoration",
+                    "priority": "medium"
+                },
+                {
+                    "area": "home solutions",
+                    "opportunity": "home organization and decoration",
+                    "priority": "medium"
+                }
+            ]
+        }
+    },
+    "2": {
+        "current_analysis": {
+            "primary_segment": "affluent families",
+            "secondary_segment": "retirees",
+            "income_level": "very high",
+            "age_distribution": {
+                "35-44": 0.25,
+                "45-54": 0.25,
+                "55-64": 0.2,
+                "others": 0.3
+            },
+            "spending_patterns": {}
+        },
+        "future_projections": {
+            "population_trends": {
+                "growth_rate": "stable",
+                "development_impact": [
+                    "luxury retail expansion",
+                    "medical facility development",
+                    "private school growth"
+                ],
+                "5_year_outlook": {
+                    "population_multiplier": 1.03,
+                    "development_stage": "basic",
+                    "emerging_demographics": [
+                        "health-conscious consumers",
+                        "environmentally conscious residents"
+                    ]
+                }
+            },
+            "lifestyle_evolution": {
+                "emerging_trends": [
+                    "increasing health consciousness",
+                    "luxury service demand",
+                    "sustainable living focus"
+                ],
+                "impact_areas": [
+                    "health_wellness_products",
+                    "premium_products",
+                    "eco_friendly_products"
+                ]
+            }
+        },
+        "product_implications": {
+            "emerging_categories": [
+                {
+                    "category": "health foods",
+                    "driver": "increasing health consciousness",
+                    "confidence": "high"
+                },
+                {
+                    "category": "wellness products",
+                    "driver": "increasing health consciousness",
+                    "confidence": "high"
+                },
+                {
+                    "category": "fitness equipment",
+                    "driver": "increasing health consciousness",
+                    "confidence": "high"
+                },
+                {
+                    "category": "eco-friendly",
+                    "driver": "sustainable living focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "organic",
+                    "driver": "sustainable living focus",
+                    "confidence": "high"
+                },
+                {
+                    "category": "reusable items",
+                    "driver": "sustainable living focus",
+                    "confidence": "high"
+                }
+            ],
+            "declining_categories": [
+                {
+                    "category": "processed foods",
+                    "reason": "increasing health consciousness",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "high-sugar items",
+                    "reason": "increasing health consciousness",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "single-use plastics",
+                    "reason": "sustainable living focus",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "non-eco products",
+                    "reason": "sustainable living focus",
+                    "confidence": "medium"
+                }
+            ],
+            "price_point_evolution": {
+                "trend": "luxury",
+                "factors": [
+                    "Area income level: very high",
+                    "Luxury development"
+                ],
+                "category_impacts": {
+                    "premium_goods": "increase"
+                },
+                "change": "+15-20%"
+            },
+            "innovation_opportunities": [
+                {
+                    "area": "wellness",
+                    "opportunity": "personalized health solutions",
+                    "priority": "high"
+                },
+                {
+                    "area": "sustainability",
+                    "opportunity": "eco-friendly alternatives",
+                    "priority": "high"
+                }
+            ]
+        }
+    },
+    "3": {
+        "current_analysis": {
+            "primary_segment": "students",
+            "secondary_segment": "artists/creatives",
+            "income_level": "mixed",
+            "age_distribution": {
+                "18-24": 0.4,
+                "25-34": 0.3,
+                "35-44": 0.15,
+                "others": 0.15
+            },
+            "spending_patterns": {
+                "high_spend_categories": [
+                    "snacks",
+                    "instant foods",
+                    "beverages"
+                ],
+                "price_sensitivity": "high",
+                "convenience_premium": "moderate"
+            }
+        },
+        "future_projections": {
+            "population_trends": {
+                "growth_rate": "moderate",
+                "development_impact": [
+                    "university expansion",
+                    "arts venue development",
+                    "startup incubator spaces"
+                ],
+                "5_year_outlook": {
+                    "population_multiplier": 1.08,
+                    "development_stage": "basic",
+                    "emerging_demographics": [
+                        "tech-savvy individuals",
+                        "environmentally conscious residents"
+                    ]
+                }
+            },
+            "lifestyle_evolution": {
+                "emerging_trends": [
+                    "increasing tech adoption",
+                    "sustainable living",
+                    "shared living spaces"
+                ],
+                "impact_areas": [
+                    "tech_enabled_services",
+                    "eco_friendly_products"
+                ]
+            }
+        },
+        "product_implications": {
+            "emerging_categories": [
+                {
+                    "category": "smart home",
+                    "driver": "increasing tech adoption",
+                    "confidence": "high"
+                },
+                {
+                    "category": "tech accessories",
+                    "driver": "increasing tech adoption",
+                    "confidence": "high"
+                },
+                {
+                    "category": "digital services",
+                    "driver": "increasing tech adoption",
+                    "confidence": "high"
+                },
+                {
+                    "category": "eco-friendly",
+                    "driver": "sustainable living",
+                    "confidence": "high"
+                },
+                {
+                    "category": "organic",
+                    "driver": "sustainable living",
+                    "confidence": "high"
+                },
+                {
+                    "category": "reusable items",
+                    "driver": "sustainable living",
+                    "confidence": "high"
+                }
+            ],
+            "declining_categories": [
+                {
+                    "category": "traditional electronics",
+                    "reason": "increasing tech adoption",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "non-smart devices",
+                    "reason": "increasing tech adoption",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "single-use plastics",
+                    "reason": "sustainable living",
+                    "confidence": "medium"
+                },
+                {
+                    "category": "non-eco products",
+                    "reason": "sustainable living",
+                    "confidence": "medium"
+                }
+            ],
+            "price_point_evolution": {
+                "trend": "diverse",
+                "factors": [
+                    "Area income level: mixed"
+                ],
+                "category_impacts": {},
+                "change": "variable"
+            },
+            "innovation_opportunities": [
+                {
+                    "area": "digital integration",
+                    "opportunity": "smart shopping experiences",
+                    "priority": "high"
+                },
+                {
+                    "area": "sustainability",
+                    "opportunity": "eco-friendly alternatives",
+                    "priority": "high"
+                }
+            ]
+        }
+    },
+    "4": {
+        "current_analysis": {},
+        "future_projections": {},
+        "product_implications": {
+            "emerging_categories": [],
+            "declining_categories": [],
+            "price_point_evolution": {
+                "trend": "stable",
+                "factors": [],
+                "category_impacts": {}
+            },
+            "innovation_opportunities": []
+        }
+    },
+    "5": {
+        "current_analysis": {},
+        "future_projections": {},
+        "product_implications": {
+            "emerging_categories": [],
+            "declining_categories": [],
+            "price_point_evolution": {
+                "trend": "stable",
+                "factors": [],
+                "category_impacts": {}
+            },
+            "innovation_opportunities": []
+        }
+    },
+    "6": {
+        "current_analysis": {},
+        "future_projections": {},
+        "product_implications": {
+            "emerging_categories": [],
+            "declining_categories": [],
+            "price_point_evolution": {
+                "trend": "stable",
+                "factors": [],
+                "category_impacts": {}
+            },
+            "innovation_opportunities": []
+        }
+    }
+}
