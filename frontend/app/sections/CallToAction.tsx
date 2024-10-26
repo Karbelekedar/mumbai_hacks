@@ -23,8 +23,7 @@ const sectionRef = useRef(null);
         <div className="section-heading relative">
           <h2 className="section-title">Sign up for free today</h2>
           <p className="section-description mt-5">
-            Celebrate the joy of accomplishment with an app designed to track
-            your progress and motivate your efforts.
+          Start predicting your hyperlocal demand patterns in minutes. Our AI-powered platform seamlessly integrates with your existing systems to deliver immediate insights and actionable intelligence.
           </p>
           <motion.img
             src={starImage.src}

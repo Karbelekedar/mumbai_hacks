@@ -24,14 +24,13 @@ export const ProductShowcase = () => {
       <div className="container">
         <div className="section-heading">
           <div className="flex justify-center items-center">
-            <div className="tag">Boost your productivity</div>
+            <div className="tag">Boost your Inventory Intelligence</div>
           </div>
           <h2 className="section-title mt-5">
-            A more effective way to track progress
+          A more effective way to predict demand
           </h2>
           <p className="section-description mt-5">
-            Effortlessly turn your ideas into a fully functional, response, SaaS
-            website in just minutes with this template.
+          Effortlessly transform your hyperlocal business with our advanced AI system that combines historical data, real-time market intelligence, and demographic insights to predict inventory needs with unprecedented accuracy.
           </p>
         </div>
 

@@ -16,58 +16,58 @@ import React from "react";
 
 const testimonials = [
   {
-    text: "As a seasoned designer always on the lookout for innovative tools, Framer.com instantly grabbed my attention.",
+    text: "The demographic insights are incredible. We discovered our area has 65% working professionals, helping us optimize our dark store inventory for grab-and-go meals.",
     imageSrc: avatar1.src,
-    name: "Jamie Rivera",
-    username: "@jamietechguru00",
+    name: "Rajesh Mehta",
+    username: "@quickmart_delhi",
   },
   {
-    text: "Our team's productivity has skyrocketed since we started using this tool. ",
+    text: "Our stockout incidents dropped by 75% within the first month. The AI predictions for our tech-hub locality are remarkably accurate.",
     imageSrc: avatar2.src,
-    name: "Josh Smith",
-    username: "@jjsmith",
+    name: "Priya Sharma",
+    username: "@priya_retail",
   },
   {
-    text: "This app has completely transformed how I manage my projects and deadlines.",
+    text: "The system predicted increased demand for healthy snacks near our store due to a new fitness center. This hyper-local intelligence is game-changing.",
     imageSrc: avatar3.src,
-    name: "Morgan Lee",
-    username: "@morganleewhiz",
+    name: "Amit Patel",
+    username: "@quickserve_mumbai",
   },
   {
-    text: "I was amazed at how quickly we were able to integrate this app into our workflow.",
+    text: "We were perfectly stocked during an unexpected rainy season because the AI predicted a surge in comfort foods. Impressive local weather integration!",
     imageSrc: avatar4.src,
-    name: "Casey Jordan",
-    username: "@caseyj",
+    name: "Deepak Kumar",
+    username: "@inventory_pro",
   },
   {
-    text: "Planning and executing events has never been easier. This app helps me keep track of all the moving parts, ensuring nothing slips through the cracks.",
+    text: "Managing inventory across multiple dark stores in Bangalore was challenging until we found this solution. Now each micro-market is optimized perfectly.",
     imageSrc: avatar5.src,
-    name: "Taylor Kim",
-    username: "@taylorkimm",
+    name: "Sarah Mathews",
+    username: "@freshcart_pune",
   },
   {
-    text: "The customizability and integration capabilities of this app are top-notch.",
+    text: "The system's ability to predict festival-related demand spikes has reduced our waste by 40% while maintaining perfect stock levels.",
     imageSrc: avatar6.src,
-    name: "Riley Smith",
-    username: "@rileysmith1",
+    name: "Kavita Singh",
+    username: "@smart_retail",
   },
   {
-    text: "Adopting this app for our team has streamlined our project management and improved communication across the board.",
+    text: "Real-time market intelligence helped us capitalize on local events we didn't even know about. Our revenue increased by 35% in just two months.",
     imageSrc: avatar7.src,
-    name: "Jordan Patels",
-    username: "@jpatelsdesign",
+    name: "Ankit Verma",
+    username: "@quickstore_guru",
   },
   {
-    text: "With this app, we can easily assign tasks, track progress, and manage documents all in one place.",
+    text: "The population intelligence feature helped us optimize our product mix perfectly for our university area dark store. Students love us!",
     imageSrc: avatar8.src,
-    name: "Sam Dawson",
-    username: "@dawsontechtips",
+    name: "Ravi Kumar",
+    username: "@campusmart",
   },
   {
-    text: "Its user-friendly interface and robust features support our diverse needs.",
+    text: "From local events to community patterns, this AI understands our market better than we did after 5 years of operation.",
     imageSrc: avatar9.src,
-    name: "Casey Harper",
-    username: "@casey09",
+    name: "Neha Gupta",
+    username: "@smartstore_blr",
   },
 ];
 
@@ -93,7 +93,6 @@ const TestimonialsColumn = (props: {
       }}
       className="flex flex-col gap-6 pb-6"
     >
-      {/* React Fragment  */}
       {[...new Array(2)].fill(0).map((_, index) => (
         <React.Fragment key={index}>
           {props.testimonials.map(({ text, imageSrc, name, username }) => (
@@ -128,12 +127,11 @@ export const Testimonials = () => {
       <div className="container">
         <div className="section-heading">
           <div className="flex justify-center">
-            <div className="tag">Testimonials</div>
+            <div className="tag">Success Stories</div>
           </div>
-          <h2 className="section-title mt-5">What our users say</h2>
+          <h2 className="section-title mt-5">What our partners say</h2>
           <p className="section-description">
-            From intutive design to powerful features, our app has become an
-            essential tool for users around the world.
+            From neighborhood stores to urban dark stores, our AI-powered inventory prediction has become an essential tool for hyperlocal businesses across India.
           </p>
         </div>
 
