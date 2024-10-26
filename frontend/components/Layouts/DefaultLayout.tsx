@@ -25,7 +25,7 @@ export default function DefaultLayout({
 
           {/* <!-- ===== Main Content Star ===== --> */}
           <main>
-            <div className="mx-auto bg-slate-100 max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div className=" bg-[radial-gradient(ellipse_200vw_100vh_at_bottom_left,#183ec2,#eaeefe_100%)] 2xl:p-10">
               {children}
             </div>
           </main>

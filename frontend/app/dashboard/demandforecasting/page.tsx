@@ -22,13 +22,13 @@ const Card = ({ children, className = "" }) => (
 const transformDemandData = (storeData) => {
   if (!storeData?.short_term_predictions?.demand_changes) return { categories: [], series: [] };
 
-  // Generate series for each category with a slant starting from 0
+  // Generate series for each category, starting at 0 and going to predicted_change (positive or negative)
   const series = storeData.short_term_predictions.demand_changes.map((change) => ({
     name: change.category,
-    data: [0, parseFloat(change.predicted_change)], // First point at 0, second at the actual change percentage
+    data: [0, parseFloat(change.predicted_change)], // Start at 0, go to actual change, positive or negative
   }));
 
-  // Use x-axis categories to represent the two points (0 and 1)
+  // Use "Start" and "Change" to show progression on the x-axis
   const categories = ["Start", "Change"];
 
   return { categories, series };
@@ -291,7 +291,7 @@ export default function DemandForecastingPage() {
     colors: ["#3b82f6", "#10b981", "#f97316"],
   };
 
-  
+
   const renderMetricCard = (title, value, icon) => (
     <Card>
       <div className="flex items-center justify-between">
@@ -371,7 +371,7 @@ export default function DemandForecastingPage() {
         )}
       </div>
 
-      <Card className="mt-8">
+      <Card className="mt-8 pr-4">
         <h3 className="text-lg font-semibold mb-4">
           Demand Changes Across Categories
         </h3>
@@ -389,7 +389,7 @@ export default function DemandForecastingPage() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 text-sm font-medium ${
+              className={`px-4 py-2 text-sm font-bold text-white ${
                 activeTab === tab
                   ? "border-b-2 border-blue-600 text-blue-600"
                   : "text-gray-500 hover:text-gray-700"
