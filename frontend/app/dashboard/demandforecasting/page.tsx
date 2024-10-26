@@ -1,95 +1,17 @@
-"use client";
+"use client"
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { ArrowUp, ArrowDown, Clock, TrendingUp, Building } from "lucide-react";
+import {
+  Card as ShadcnCard,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
+import dynamic from "next/dynamic";
 
-// Dynamically import ApexCharts to avoid SSR issues
+// Dynamically import ApexCharts
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-
-// Types remain the same as before
-interface DemandChange {
-  category: string;
-  predicted_change: string;
-  confidence: string;
-  driving_factors: string[];
-}
-
-interface PeakHours {
-  changes: string[];
-  factors: string[];
-}
-
-interface ShortTermPredictions {
-  demand_changes: DemandChange[];
-  peak_hours: PeakHours;
-}
-
-interface EmergingCategory {
-  category: string;
-  growth_potential: string;
-  driving_factors: string[];
-}
-
-interface DemographicShift {
-  trend: string;
-  impact: string;
-  category_implications: string[];
-}
-
-interface MidTermPredictions {
-  emerging_categories: EmergingCategory[];
-  demographic_shifts: DemographicShift[];
-}
-
-interface LongTermPredictions {
-  population_evolution: {
-    changes: string[];
-    category_impacts: string[];
-  };
-  infrastructure_development: {
-    projects: string[];
-    business_implications: string[];
-  };
-  recommended_adaptations: {
-    area: string;
-    action: string;
-    timeline: string;
-    priority: string;
-  }[];
-}
-
-interface StoreData {
-  short_term_predictions: ShortTermPredictions;
-  mid_term_predictions: MidTermPredictions;
-  long_term_predictions: LongTermPredictions;
-}
-
-interface StoreDataMap {
-  [key: string]: StoreData;
-}
-
-const transformDemandData = (stores: StoreDataMap) => {
-  const categories: string[] = [];
-  const changes: number[] = [];
-  const confidence: number[] = [];
-
-  Object.keys(stores).forEach((storeId) => {
-    stores[storeId].short_term_predictions.demand_changes.forEach((change) => {
-      categories.push(change.category);
-      changes.push(parseFloat(change.predicted_change));
-      confidence.push(parseFloat(change.confidence));
-    });
-  });
-
-  return {
-    categories,
-    series: [
-      { name: "Change", data: changes },
-      { name: "Confidence", data: confidence },
-    ],
-  };
-};
 
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-lg shadow-md p-4 ${className}`}>
@@ -97,12 +19,27 @@ const Card = ({ children, className = "" }) => (
   </div>
 );
 
+const transformDemandData = (storeData) => {
+  if (!storeData?.short_term_predictions?.demand_changes) return { categories: [], series: [] };
+
+  // Generate series for each category with a slant starting from 0
+  const series = storeData.short_term_predictions.demand_changes.map((change) => ({
+    name: change.category,
+    data: [0, parseFloat(change.predicted_change)], // First point at 0, second at the actual change percentage
+  }));
+
+  // Use x-axis categories to represent the two points (0 and 1)
+  const categories = ["Start", "Change"];
+
+  return { categories, series };
+};
+
 export default function DemandForecastingPage() {
   const [selectedStore, setSelectedStore] = useState("1");
   const [activeTab, setActiveTab] = useState("short");
 
-  // Sample data (same as before)
-  const data: StoreDataMap = {
+  // Sample data (imported from your JSON)
+  const data = {
     "1": {
       short_term_predictions: {
         demand_changes: [
@@ -115,6 +52,24 @@ export default function DemandForecastingPage() {
               "convenience premium",
             ],
           },
+          {
+            category: "wellness products",
+            predicted_change: "+10",
+            confidence: "80",
+            driving_factors: [
+              "health and wellness focus",
+              "emerging health-conscious consumers",
+            ],
+          },
+          {
+            category: "convenience meals",
+            predicted_change: "+12",
+            confidence: "90",
+            driving_factors: [
+              "work-from-home lifestyle",
+              "high income level",
+            ],
+          },
         ],
         peak_hours: {
           changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
@@ -124,108 +79,243 @@ export default function DemandForecastingPage() {
           ],
         },
       },
-      mid_term_predictions: {
-        emerging_categories: [],
-        demographic_shifts: [],
+    },
+    "2": {
+      short_term_predictions: {
+        demand_changes: [
+          {
+            category: "health foods",
+            predicted_change: "+10",
+            confidence: "85",
+            driving_factors: [
+              "increasing health consciousness",
+              "affluent family lifestyle",
+            ],
+          },
+          {
+            category: "wellness products",
+            predicted_change: "+12",
+            confidence: "80",
+            driving_factors: [
+              "luxury service demand",
+              "health consciousness",
+            ],
+          },
+          {
+            category: "eco-friendly products",
+            predicted_change: "+8",
+            confidence: "75",
+            driving_factors: [
+              "sustainable living focus",
+              "environmentally conscious residents",
+            ],
+          },
+        ],
+        peak_hours: {
+          changes: ["10 AM - 12 PM", "4 PM - 6 PM"],
+          factors: [
+            "affluent families shopping patterns",
+            "retiree free time",
+          ],
+        },
       },
-      long_term_predictions: {
-        population_evolution: {
-          changes: [],
-          category_impacts: [],
+    },
+    "3": {
+      short_term_predictions: {
+        demand_changes: [
+          {
+            category: "snacks",
+            predicted_change: "+5",
+            confidence: "80",
+            driving_factors: [
+              "student segment",
+              "convenience premium",
+            ],
+          },
+          {
+            category: "instant foods",
+            predicted_change: "+3",
+            confidence: "75",
+            driving_factors: [
+              "student segment",
+              "price sensitivity",
+            ],
+          },
+          {
+            category: "beverages",
+            predicted_change: "+4",
+            confidence: "70",
+            driving_factors: [
+              "student segment",
+              "convenience premium",
+            ],
+          },
+        ],
+        peak_hours: {
+          changes: ["12:00 PM - 2:00 PM", "5:00 PM - 7:00 PM"],
+          factors: [
+            "student class schedules",
+            "after work activities",
+          ],
         },
-        infrastructure_development: {
-          projects: [],
-          business_implications: [],
+      },
+    },
+    "4": {
+      short_term_predictions: {
+        demand_changes: [
+          {
+            category: "organic groceries",
+            predicted_change: "+15",
+            confidence: "85",
+            driving_factors: [
+              "increased health awareness",
+              "seasonal produce availability",
+            ],
+          },
+          {
+            category: "home office supplies",
+            predicted_change: "+10",
+            confidence: "80",
+            driving_factors: [
+              "continued remote work trends",
+              "back-to-school season",
+            ],
+          },
+        ],
+        peak_hours: {
+          changes: ["10 AM - 12 PM", "5 PM - 7 PM"],
+          factors: [
+            "work-from-home schedules",
+            "evening grocery runs",
+          ],
         },
-        recommended_adaptations: [],
+      },
+    },
+    "5": {
+      short_term_predictions: {
+        demand_changes: [
+          {
+            category: "organic groceries",
+            predicted_change: "+10",
+            confidence: "85",
+            driving_factors: [
+              "health awareness",
+              "seasonal trends",
+            ],
+          },
+          {
+            category: "electronics",
+            predicted_change: "-5",
+            confidence: "70",
+            driving_factors: [
+              "economic slowdown",
+              "market saturation",
+            ],
+          },
+        ],
+        peak_hours: {
+          changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
+          factors: [
+            "lunch breaks",
+            "evening shopping",
+          ],
+        },
+      },
+    },
+    "6": {
+      short_term_predictions: {
+        demand_changes: [
+          {
+            category: "organic produce",
+            predicted_change: "+12",
+            confidence: "85",
+            driving_factors: [
+              "increased health awareness",
+              "seasonal trends",
+            ],
+          },
+          {
+            category: "frozen foods",
+            predicted_change: "-5",
+            confidence: "70",
+            driving_factors: [
+              "shift towards fresh products",
+              "warming weather",
+            ],
+          },
+        ],
+        peak_hours: {
+          changes: ["5 PM - 7 PM", "11 AM - 1 PM"],
+          factors: [
+            "after-work shopping",
+            "lunch hour",
+          ],
+        },
       },
     },
   };
+  
 
-  const getStoreData = (storeId: string): StoreData => {
-    return (
-      data[storeId] || {
-        short_term_predictions: {
-          demand_changes: [],
-          peak_hours: { changes: [], factors: [] },
-        },
-        mid_term_predictions: {
-          emerging_categories: [],
-          demographic_shifts: [],
-        },
-        long_term_predictions: {
-          population_evolution: { changes: [], category_impacts: [] },
-          infrastructure_development: {
-            projects: [],
-            business_implications: [],
-          },
-          recommended_adaptations: [],
-        },
-      }
-    );
+  const currentStoreData = data[selectedStore] || {
+    short_term_predictions: {
+      demand_changes: [],
+      peak_hours: { changes: [], factors: [] },
+    },
   };
 
-  const chartData = transformDemandData(data);
+  const chartData = transformDemandData(currentStoreData);
   const chartOptions = {
     chart: {
-      type: "bar",
+      type: "line",
       height: 350,
-      stacked: false,
-      toolbar: {
-        show: true,
-      },
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "55%",
-        endingShape: "rounded",
-      },
-    },
-    dataLabels: {
-      enabled: false,
+      toolbar: { show: true },
     },
     stroke: {
-      show: true,
+      curve: "smooth",
       width: 2,
-      colors: ["transparent"],
     },
+    dataLabels: { enabled: false },
     xaxis: {
-      categories: chartData.categories,
+      categories: chartData.categories, // "Start" and "Change" to show slanting effect
+      labels: { show: false }, // Hide x-axis labels if desired
     },
     yaxis: {
-      title: {
-        text: "Percentage (%)",
-      },
-    },
-    fill: {
-      opacity: 1,
+      title: { text: "Percentage Increase (%)" },
+      min: 0,
     },
     tooltip: {
       y: {
-        formatter: function (val: number) {
-          return val + "%";
-        },
+        formatter: (val) => `${val}%`,
       },
     },
-    colors: ["#3b82f6", "#10b981"],
+    colors: ["#3b82f6", "#10b981", "#f97316"],
   };
 
-  const renderPredictionCard = (
-    title: string,
-    predictions: DemandChange[],
-    icon: React.ReactNode
-  ) => {
-    return (
-      <Card>
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium text-gray-900">{title}</h3>
-          {icon}
+  
+  const renderMetricCard = (title, value, icon) => (
+    <Card>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-gray-500">{title}</p>
+          <h3 className="text-xl font-bold">{value}</h3>
         </div>
-        <div className="space-y-2">
-          {predictions.map((pred, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">{pred.category}</span>
+        {icon}
+      </div>
+    </Card>
+  );
+
+  const renderPredictionCard = (predictions) => (
+    <Card>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-sm font-medium text-gray-900">Category Changes</h3>
+        <TrendingUp className="h-4 w-4 text-blue-600" />
+      </div>
+      <div className="space-y-2">
+        {predictions.map((pred, index) => (
+          <div key={index} className="flex items-center justify-between">
+            <span className="text-sm text-gray-500">{pred.category}</span>
+            <div className="flex items-center space-x-2">
+              <span className="text-xs text-gray-500">{pred.confidence}% confidence</span>
               <span
                 className={`text-sm ${
                   pred.predicted_change.includes("+")
@@ -236,11 +326,11 @@ export default function DemandForecastingPage() {
                 {pred.predicted_change}%
               </span>
             </div>
-          ))}
-        </div>
-      </Card>
-    );
-  };
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
 
   return (
     <div className="p-4 space-y-4">
@@ -263,53 +353,22 @@ export default function DemandForecastingPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-500">Peak Hours</p>
-              <h3 className="text-xl font-bold">
-                {
-                  getStoreData(selectedStore)?.short_term_predictions
-                    ?.peak_hours?.changes?.[0]
-                }
-              </h3>
-            </div>
-            <Clock className="h-8 w-8 text-blue-600" />
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-500">
-                Top Growth Category
-              </p>
-              <h3 className="text-xl font-bold">
-                {
-                  getStoreData(selectedStore)?.short_term_predictions
-                    ?.demand_changes?.[0]?.category
-                }
-              </h3>
-            </div>
-            <TrendingUp className="h-8 w-8 text-green-600" />
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-500">
-                Infrastructure Projects
-              </p>
-              <h3 className="text-xl font-bold">
-                {getStoreData(selectedStore)?.long_term_predictions
-                  ?.infrastructure_development?.projects?.length || 0}
-              </h3>
-            </div>
-            <Building className="h-8 w-8 text-purple-600" />
-          </div>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {renderMetricCard(
+          "Peak Hours",
+          currentStoreData.short_term_predictions.peak_hours.changes[0],
+          <Clock className="h-8 w-8 text-blue-600" />
+        )}
+        {renderMetricCard(
+          "Top Growth Category",
+          currentStoreData.short_term_predictions.demand_changes[0]?.category,
+          <TrendingUp className="h-8 w-8 text-green-600" />
+        )}
+        {renderMetricCard(
+          "Infrastructure Projects",
+          currentStoreData.long_term_predictions?.infrastructure_development?.projects?.length || 0,
+          <Building className="h-8 w-8 text-purple-600" />
+        )}
       </div>
 
       <Card className="mt-8">
@@ -319,7 +378,7 @@ export default function DemandForecastingPage() {
         <Chart
           options={chartOptions}
           series={chartData.series}
-          type="bar"
+          type="line" // Set type to line
           height={350}
         />
       </Card>
@@ -345,21 +404,78 @@ export default function DemandForecastingPage() {
           {activeTab === "short" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {renderPredictionCard(
-                "Short Term Predictions",
-                getStoreData(selectedStore)?.short_term_predictions
-                  ?.demand_changes || [],
-                <ArrowUp className="h-4 w-4 text-green-600" />
+                currentStoreData.short_term_predictions.demand_changes
               )}
+              <Card>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Driving Factors</h3>
+                <ul className="space-y-2">
+                  {currentStoreData.short_term_predictions.peak_hours.factors.map((factor, index) => (
+                    <li key={index} className="text-sm text-gray-600">
+                      • {factor}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
             </div>
           )}
           {activeTab === "mid" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Mid-term predictions content */}
+              <Card>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Emerging Categories</h3>
+                {currentStoreData.mid_term_predictions?.emerging_categories.map((category, index) => (
+                  <div key={index} className="mb-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">{category.category}</span>
+                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                        {category.growth_potential}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </Card>
+              <Card>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Demographic Shifts</h3>
+                {currentStoreData.mid_term_predictions?.demographic_shifts.map((shift, index) => (
+                  <div key={index} className="mb-4">
+                    <div className="text-sm font-medium">{shift.trend}</div>
+                    <div className="text-xs text-gray-500 mt-1">Impact: {shift.impact}</div>
+                  </div>
+                ))}
+              </Card>
             </div>
           )}
           {activeTab === "long" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Long-term predictions content */}
+              <Card>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Population Evolution</h3>
+                <ul className="space-y-2">
+                  {currentStoreData.long_term_predictions?.population_evolution.changes.map((change, index) => (
+                    <li key={index} className="text-sm text-gray-600">
+                      • {change}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+              <Card>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Recommended Adaptations</h3>
+                {currentStoreData.long_term_predictions?.recommended_adaptations.map((adaptation, index) => (
+                  <div key={index} className="mb-4">
+                    <div className="text-sm font-medium">{adaptation.area}</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      {adaptation.action} • {adaptation.timeline}
+                    </div>
+                    <div className="mt-1">
+                      <span className={`text-xs px-2 py-1 rounded ${
+                        adaptation.priority === "high" 
+                          ? "bg-red-100 text-red-800"
+                          : "bg-yellow-100 text-yellow-800"
+                      }`}>
+                        {adaptation.priority} priority
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </Card>
             </div>
           )}
         </div>
