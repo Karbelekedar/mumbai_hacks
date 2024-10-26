@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { ArrowUp, ArrowDown, Clock, TrendingUp, Building } from "lucide-react";
@@ -20,7 +20,8 @@ const Card = ({ children, className = "" }) => (
 );
 
 const transformDemandData = (storeData) => {
-  if (!storeData?.short_term_predictions?.demand_changes) return { categories: [], series: [] };
+  if (!storeData?.short_term_predictions?.demand_changes)
+    return { categories: [], series: [] };
 
   // Generate series for each category, starting at 0 and going to predicted_change (positive or negative)
   const series = storeData.short_term_predictions.demand_changes.map((change) => ({
@@ -65,10 +66,7 @@ export default function DemandForecastingPage() {
             category: "convenience meals",
             predicted_change: "+12",
             confidence: "90",
-            driving_factors: [
-              "work-from-home lifestyle",
-              "high income level",
-            ],
+            driving_factors: ["work-from-home lifestyle", "high income level"],
           },
         ],
         peak_hours: {
@@ -96,10 +94,7 @@ export default function DemandForecastingPage() {
             category: "wellness products",
             predicted_change: "+12",
             confidence: "80",
-            driving_factors: [
-              "luxury service demand",
-              "health consciousness",
-            ],
+            driving_factors: ["luxury service demand", "health consciousness"],
           },
           {
             category: "eco-friendly products",
@@ -113,10 +108,7 @@ export default function DemandForecastingPage() {
         ],
         peak_hours: {
           changes: ["10 AM - 12 PM", "4 PM - 6 PM"],
-          factors: [
-            "affluent families shopping patterns",
-            "retiree free time",
-          ],
+          factors: ["affluent families shopping patterns", "retiree free time"],
         },
       },
     },
@@ -127,36 +119,24 @@ export default function DemandForecastingPage() {
             category: "snacks",
             predicted_change: "+5",
             confidence: "80",
-            driving_factors: [
-              "student segment",
-              "convenience premium",
-            ],
+            driving_factors: ["student segment", "convenience premium"],
           },
           {
             category: "instant foods",
             predicted_change: "+3",
             confidence: "75",
-            driving_factors: [
-              "student segment",
-              "price sensitivity",
-            ],
+            driving_factors: ["student segment", "price sensitivity"],
           },
           {
             category: "beverages",
             predicted_change: "+4",
             confidence: "70",
-            driving_factors: [
-              "student segment",
-              "convenience premium",
-            ],
+            driving_factors: ["student segment", "convenience premium"],
           },
         ],
         peak_hours: {
           changes: ["12:00 PM - 2:00 PM", "5:00 PM - 7:00 PM"],
-          factors: [
-            "student class schedules",
-            "after work activities",
-          ],
+          factors: ["student class schedules", "after work activities"],
         },
       },
     },
@@ -184,10 +164,7 @@ export default function DemandForecastingPage() {
         ],
         peak_hours: {
           changes: ["10 AM - 12 PM", "5 PM - 7 PM"],
-          factors: [
-            "work-from-home schedules",
-            "evening grocery runs",
-          ],
+          factors: ["work-from-home schedules", "evening grocery runs"],
         },
       },
     },
@@ -198,27 +175,18 @@ export default function DemandForecastingPage() {
             category: "organic groceries",
             predicted_change: "+10",
             confidence: "85",
-            driving_factors: [
-              "health awareness",
-              "seasonal trends",
-            ],
+            driving_factors: ["health awareness", "seasonal trends"],
           },
           {
             category: "electronics",
             predicted_change: "-5",
             confidence: "70",
-            driving_factors: [
-              "economic slowdown",
-              "market saturation",
-            ],
+            driving_factors: ["economic slowdown", "market saturation"],
           },
         ],
         peak_hours: {
           changes: ["12:00 PM - 2:00 PM", "6:00 PM - 8:00 PM"],
-          factors: [
-            "lunch breaks",
-            "evening shopping",
-          ],
+          factors: ["lunch breaks", "evening shopping"],
         },
       },
     },
@@ -229,10 +197,7 @@ export default function DemandForecastingPage() {
             category: "organic produce",
             predicted_change: "+12",
             confidence: "85",
-            driving_factors: [
-              "increased health awareness",
-              "seasonal trends",
-            ],
+            driving_factors: ["increased health awareness", "seasonal trends"],
           },
           {
             category: "frozen foods",
@@ -246,15 +211,11 @@ export default function DemandForecastingPage() {
         ],
         peak_hours: {
           changes: ["5 PM - 7 PM", "11 AM - 1 PM"],
-          factors: [
-            "after-work shopping",
-            "lunch hour",
-          ],
+          factors: ["after-work shopping", "lunch hour"],
         },
       },
     },
   };
-  
 
   const currentStoreData = data[selectedStore] || {
     short_term_predictions: {
@@ -315,7 +276,9 @@ export default function DemandForecastingPage() {
           <div key={index} className="flex items-center justify-between">
             <span className="text-sm text-gray-500">{pred.category}</span>
             <div className="flex items-center space-x-2">
-              <span className="text-xs text-gray-500">{pred.confidence}% confidence</span>
+              <span className="text-xs text-gray-500">
+                {pred.confidence}% confidence
+              </span>
               <span
                 className={`text-sm ${
                   pred.predicted_change.includes("+")
@@ -366,7 +329,8 @@ export default function DemandForecastingPage() {
         )}
         {renderMetricCard(
           "Infrastructure Projects",
-          currentStoreData.long_term_predictions?.infrastructure_development?.projects?.length || 0,
+          currentStoreData.long_term_predictions?.infrastructure_development
+            ?.projects?.length || 0,
           <Building className="h-8 w-8 text-purple-600" />
         )}
       </div>
@@ -407,13 +371,17 @@ export default function DemandForecastingPage() {
                 currentStoreData.short_term_predictions.demand_changes
               )}
               <Card>
-                <h3 className="text-sm font-medium text-gray-900 mb-4">Driving Factors</h3>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Driving Factors
+                </h3>
                 <ul className="space-y-2">
-                  {currentStoreData.short_term_predictions.peak_hours.factors.map((factor, index) => (
-                    <li key={index} className="text-sm text-gray-600">
-                      • {factor}
-                    </li>
-                  ))}
+                  {currentStoreData.short_term_predictions.peak_hours.factors.map(
+                    (factor, index) => (
+                      <li key={index} className="text-sm text-gray-600">
+                        • {factor}
+                      </li>
+                    )
+                  )}
                 </ul>
               </Card>
             </div>
@@ -421,60 +389,84 @@ export default function DemandForecastingPage() {
           {activeTab === "mid" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
-                <h3 className="text-sm font-medium text-gray-900 mb-4">Emerging Categories</h3>
-                {currentStoreData.mid_term_predictions?.emerging_categories.map((category, index) => (
-                  <div key={index} className="mb-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">{category.category}</span>
-                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                        {category.growth_potential}
-                      </span>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Emerging Categories
+                </h3>
+                {currentStoreData.mid_term_predictions?.emerging_categories.map(
+                  (category, index) => (
+                    <div key={index} className="mb-4">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">
+                          {category.category}
+                        </span>
+                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                          {category.growth_potential}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
               </Card>
               <Card>
-                <h3 className="text-sm font-medium text-gray-900 mb-4">Demographic Shifts</h3>
-                {currentStoreData.mid_term_predictions?.demographic_shifts.map((shift, index) => (
-                  <div key={index} className="mb-4">
-                    <div className="text-sm font-medium">{shift.trend}</div>
-                    <div className="text-xs text-gray-500 mt-1">Impact: {shift.impact}</div>
-                  </div>
-                ))}
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Demographic Shifts
+                </h3>
+                {currentStoreData.mid_term_predictions?.demographic_shifts.map(
+                  (shift, index) => (
+                    <div key={index} className="mb-4">
+                      <div className="text-sm font-medium">{shift.trend}</div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        Impact: {shift.impact}
+                      </div>
+                    </div>
+                  )
+                )}
               </Card>
             </div>
           )}
           {activeTab === "long" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
-                <h3 className="text-sm font-medium text-gray-900 mb-4">Population Evolution</h3>
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Population Evolution
+                </h3>
                 <ul className="space-y-2">
-                  {currentStoreData.long_term_predictions?.population_evolution.changes.map((change, index) => (
-                    <li key={index} className="text-sm text-gray-600">
-                      • {change}
-                    </li>
-                  ))}
+                  {currentStoreData.long_term_predictions?.population_evolution.changes.map(
+                    (change, index) => (
+                      <li key={index} className="text-sm text-gray-600">
+                        • {change}
+                      </li>
+                    )
+                  )}
                 </ul>
               </Card>
               <Card>
-                <h3 className="text-sm font-medium text-gray-900 mb-4">Recommended Adaptations</h3>
-                {currentStoreData.long_term_predictions?.recommended_adaptations.map((adaptation, index) => (
-                  <div key={index} className="mb-4">
-                    <div className="text-sm font-medium">{adaptation.area}</div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      {adaptation.action} • {adaptation.timeline}
+                <h3 className="text-sm font-medium text-gray-900 mb-4">
+                  Recommended Adaptations
+                </h3>
+                {currentStoreData.long_term_predictions?.recommended_adaptations.map(
+                  (adaptation, index) => (
+                    <div key={index} className="mb-4">
+                      <div className="text-sm font-medium">
+                        {adaptation.area}
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        {adaptation.action} • {adaptation.timeline}
+                      </div>
+                      <div className="mt-1">
+                        <span
+                          className={`text-xs px-2 py-1 rounded ${
+                            adaptation.priority === "high"
+                              ? "bg-red-100 text-red-800"
+                              : "bg-yellow-100 text-yellow-800"
+                          }`}
+                        >
+                          {adaptation.priority} priority
+                        </span>
+                      </div>
                     </div>
-                    <div className="mt-1">
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        adaptation.priority === "high" 
-                          ? "bg-red-100 text-red-800"
-                          : "bg-yellow-100 text-yellow-800"
-                      }`}>
-                        {adaptation.priority} priority
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                  )
+                )}
               </Card>
             </div>
           )}
