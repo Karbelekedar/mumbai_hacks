@@ -7,6 +7,7 @@ import Image from "next/image";
 import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/components/hooks/useLocalStorage";
+import Logo from "@/app/assets/logosaas.png";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -296,18 +297,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 xl:py-10">
           <Link href="/">
             <Image
-              width={176}
-              height={32}
-              src={"/images/logo/logo-dark.svg"}
+              width={40}
+              height={40}
+              src={Logo}
               alt="Logo"
               priority
               className="dark:hidden"
               style={{ width: "auto", height: "auto" }}
             />
             <Image
-              width={176}
-              height={32}
-              src={"/images/logo/logo.svg"}
+              width={40}
+              height={40}
+              src={Logo}
               alt="Logo"
               priority
               className="hidden dark:block"
